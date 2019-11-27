@@ -9,8 +9,8 @@ import getpass
 
 class Aplicacion():
     def __init__(self):
-        self.raiz = Tk()
-        self.raiz.title("Acceso")
+        self.root = Tk()
+        self.root.title("Acceso")
         
         # Cambia el formato de la fuente actual a negrita para
         # resaltar las dos etiquetas que acompañan a las cajas
@@ -22,9 +22,9 @@ class Aplicacion():
         # Define las etiquetas que acompañan a las cajas de
         # entrada y asigna el formato de fuente anterior: 
                                
-        self.etiq1 = ttk.Label(self.raiz, text="Usuario:", 
+        self.etiq1 = ttk.Label(self.root, text="Usuario:", 
                                font=fuente)
-        self.etiq2 = ttk.Label(self.raiz, text="Contraseña:", 
+        self.etiq2 = ttk.Label(self.root, text="Contraseña:", 
                                font=fuente)
         
         # Declara dos variables de tipo cadena para contener
@@ -53,13 +53,13 @@ class Aplicacion():
         # 'show' con un "*" (asterisco) para ocultar la 
         # escritura de las contraseñas:
         
-        self.ctext1 = ttk.Entry(self.raiz, 
+        self.ctext1 = ttk.Entry(self.root, 
                                 textvariable=self.usuario, 
                                 width=30)
-        self.ctext2 = ttk.Entry(self.raiz, 
+        self.ctext2 = ttk.Entry(self.root, 
                                 textvariable=self.clave, 
                                 width=30, show="*")
-        self.separ1 = ttk.Separator(self.raiz, orient=HORIZONTAL)
+        self.separ1 = ttk.Separator(self.root, orient=HORIZONTAL)
         
         # Se definen dos botones con dos métodos: El botón
         # 'Aceptar' llamará al método 'self.aceptar' cuando
@@ -67,9 +67,9 @@ class Aplicacion():
         # 'Cancelar' finalizará la aplicación si se llega a
         # presionar:
         
-        self.boton1 = ttk.Button(self.raiz, text="Aceptar", 
+        self.boton1 = ttk.Button(self.root, text="Aceptar", 
                                  command=self.aceptar)
-        self.boton2 = ttk.Button(self.raiz, text="Cancelar", 
+        self.boton2 = ttk.Button(self.root, text="Cancelar", 
                                  command=quit)
                                  
         # Se definen las posiciones de los widgets dentro de
@@ -114,7 +114,7 @@ class Aplicacion():
                 
         self.ctext2.focus_set()
         
-        self.raiz.mainloop()
+        self.root.mainloop()
     
     # El método 'aceptar' se emplea para validar la 
     # contraseña introducida. Será llamado cuando se 

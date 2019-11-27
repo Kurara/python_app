@@ -96,11 +96,11 @@ class Aplicacion():
     
     def aceptar(self):
         if self.clave.get() == 'tkinter':
-            print("Acceso permitido")
-            print("Usuario:   ", self.ctext1.get())
-            print("Contraseña:", self.ctext2.get())
+            print("Access granted!")
+            print("User:   ", self.ctext1.get())
+            print("Password:", self.ctext2.get())
         else:
-            print("Acceso denegado")
+            print("Forbidden Access")
             self.clave.set("")
             self.ctext2.focus_set()
 

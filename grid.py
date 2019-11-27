@@ -5,46 +5,40 @@ from tkinter import *
 from tkinter import ttk, font
 import getpass
 
-# Gestor de geometría (grid). Ventana no dimensionable
+# Gestore geometrico (grid). Finestra no dimensionabile
 
 class Aplicacion():
     def __init__(self):
-        self.raiz = Tk()
-        self.raiz.title("Acceso")
+        self.root = Tk()
+        self.root.title("Acceso")
         
-        # Establece que no se pueda modificar el tamaño de la
-        # ventana. El método resizable(0,0) es la forma abreviada 
-        # de resizable(width=False,height=False).
+        # In questa funzione si imposibilita la ridimensione
+        # della finestra, già che 0 = False
         
-        self.raiz.resizable(0,0)
+        self.root.resizable(0,0)
         fuente = font.Font(weight='bold')
         
-        # Define un widget de tipo 'Frame' (marco) que será el
-        # contenedor del resto de widgets. El marco se situará 
-        # en la ventana 'self.raiz' ocupando toda su extensión.
-        # El marco se define con un borde de 2 píxeles y la
-        # opción 'relief' con el valor 'raised' (elevado) añade
-        # un efecto 3D a su borde. 
-        # La opción 'relief' permite los siguientes valores:
-        # FLAT (llano), RAISED (elevado), SUNKEN (hundido),
-        # GROOVE (hendidura) y RIDGE (borde elevado).
-        # La opción 'padding' añade espacio extra interior para
-        # que los widgets no queden pegados al borde del marco.
+        # Definisce un widget di tipo 'Frame' (marco) cha farà
+        # di contenitore del resto di widgets. Sarà situato
+        # dentro di 'self.root'.
+        # Ha un bordo di 2 pixel e il valore relief="raised" le
+        # da un effeto 3D al bordo.
+        # Posibili valori:
+        # FLAT (piato), RAISED (rialzato), SUNKEN (),
+        # GROOVE () y RIDGE ().
+        # 'padding' è lo spazio interiore fra i widget e il marco.
           
-        self.marco = ttk.Frame(self.raiz, borderwidth=2,
+        self.marco = ttk.Frame(self.root, borderwidth=2,
                                relief="raised", padding=(10,10))
                                
-        # Define el resto de widgets pero en este caso el primer 
-        # paràmetro indica que se situarán en el widget del 
-        # marco anterior 'self.marco'.
+        # Definisce il resto di widget dentro a 'marco'
                                
-        self.etiq1 = ttk.Label(self.marco, text="Usuario:", 
+        self.etiq1 = ttk.Label(self.marco, text="User:", 
                                font=fuente, padding=(5,5))
-        self.etiq2 = ttk.Label(self.marco, text="Contraseña:",
+        self.etiq2 = ttk.Label(self.marco, text="Password:",
                                font=fuente, padding=(5,5))
                                
-        # Define variables para las opciones 'textvariable' de
-        # cada caja de entrada 'ttk.Entry()'.
+        # Definisce variabili per 'textvariable'
         
         self.usuario = StringVar()
         self.clave = StringVar()
@@ -84,19 +78,18 @@ class Aplicacion():
         self.boton1.grid(column=1, row=4)
         self.boton2.grid(column=2, row=4)
 
-        # Establece el foco en la caja de entrada de la
-        # contraseña.
+        # Stabilisce il foco sulla password
 
         self.ctext2.focus_set()
-        self.raiz.mainloop()
+        self.root.mainloop()
     
     def aceptar(self):
         if self.clave.get() == 'tkinter':
-            print("Acceso permitido")
-            print("Usuario:   ", self.ctext1.get())
-            print("Contraseña:", self.ctext2.get())
+            print("Access granted!")
+            print("User:   ", self.ctext1.get())
+            print("Password:", self.ctext2.get())
         else:
-            print("Acceso denegado")
+            print("Forbidden Access")
             self.clave.set("")
             self.ctext2.focus_set()
 
