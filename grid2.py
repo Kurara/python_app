@@ -9,26 +9,26 @@ import getpass
 
 class Aplicacion():
     def __init__(self):
-        self.raiz = Tk()
-        self.raiz.title("Acceso")
+        self.root = Tk()
+        self.root.title("Acceso")
         fuente = font.Font(weight='bold')  
-        self.marco = ttk.Frame(self.raiz, borderwidth=2,
+        self.cornice = ttk.Frame(self.root, borderwidth=2,
                                relief="raised", padding=(10,10))
-        self.etiq1 = ttk.Label(self.marco, text="Usuario:", 
+        self.etiq1 = ttk.Label(self.cornice, text="Usuario:", 
                                font=fuente, padding=(5,5))
-        self.etiq2 = ttk.Label(self.marco, text="Contraseña:", 
+        self.etiq2 = ttk.Label(self.cornice, text="Contraseña:", 
                                font=fuente, padding=(5,5))
         self.usuario = StringVar()
         self.clave = StringVar()
         self.usuario.set(getpass.getuser())        
-        self.ctext1 = ttk.Entry(self.marco, textvariable=self.usuario,
+        self.ctext1 = ttk.Entry(self.cornice, textvariable=self.usuario,
                                 width=30)
-        self.ctext2 = ttk.Entry(self.marco, textvariable=self.clave,
+        self.ctext2 = ttk.Entry(self.cornice, textvariable=self.clave,
                                 show="*", width=30)
-        self.separ1 = ttk.Separator(self.marco, orient=HORIZONTAL)
-        self.boton1 = ttk.Button(self.marco, text="Aceptar", 
+        self.separ1 = ttk.Separator(self.cornice, orient=HORIZONTAL)
+        self.boton1 = ttk.Button(self.cornice, text="Aceptar", 
                                  padding=(5,5), command=self.aceptar)
-        self.boton2 = ttk.Button(self.marco, text="Cancelar", 
+        self.boton2 = ttk.Button(self.cornice, text="Cancelar", 
                                  padding=(5,5), command=quit)
         
         # Para conseguir que la cuadricula y los widgets se 
@@ -47,7 +47,7 @@ class Aplicacion():
         # Pero con definir la opción 'sticky' no es suficiente: 
         # hay activar esta propiedad más adelante.
         
-        self.marco.grid(column=0, row=0, padx=5, pady=5, 
+        self.cornice.grid(column=0, row=0, padx=5, pady=5, 
                         sticky=(N, S, E, W))
         self.etiq1.grid(column=0, row=0, 
                         sticky=(N, S, E, W))
@@ -79,20 +79,20 @@ class Aplicacion():
         # Lo habitual es asignar pesos a filas o columnas donde 
         # hay celdas con widgets.
 
-        self.raiz.columnconfigure(0, weight=1)
-        self.raiz.rowconfigure(0, weight=1)
-        self.marco.columnconfigure(0, weight=1)
-        self.marco.columnconfigure(1, weight=1)
-        self.marco.columnconfigure(2, weight=1)
-        self.marco.rowconfigure(0, weight=1)
-        self.marco.rowconfigure(1, weight=1)
-        self.marco.rowconfigure(4, weight=1)
+        self.root.columnconfigure(0, weight=1)
+        self.root.rowconfigure(0, weight=1)
+        self.cornice.columnconfigure(0, weight=1)
+        self.cornice.columnconfigure(1, weight=1)
+        self.cornice.columnconfigure(2, weight=1)
+        self.cornice.rowconfigure(0, weight=1)
+        self.cornice.rowconfigure(1, weight=1)
+        self.cornice.rowconfigure(4, weight=1)
         
         # Establece el foco en la caja de entrada de la
         # contraseña.
         
         self.ctext2.focus_set()
-        self.raiz.mainloop()
+        self.root.mainloop()
     
     def aceptar(self):
         if self.clave.get() == 'tkinter':

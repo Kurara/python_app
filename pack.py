@@ -12,20 +12,21 @@ class Aplicacion():
         self.root = Tk()
         self.root.title("Acceso")
         
-        # Cambia el formato de la fuente actual a negrita para
+        # Cambia el formato de la fonte_grossa actual a negrita para
         # resaltar las dos etiquetas que acompañan a las cajas
         # de entrada. (Para este cambio se ha importado el  
         # módulo 'font' al comienzo del programa):
         
-        fuente = font.Font(weight='bold')
+        fonte_grossa = font.Font(weight='bold')
+        fonte_light = font.Font(weight='bold', size=10)
         
         # Define las etiquetas que acompañan a las cajas de
-        # entrada y asigna el formato de fuente anterior: 
+        # entrada y asigna el formato de fonte_grossa anterior: 
                                
-        self.etiq1 = ttk.Label(self.root, text="Usuario:", 
-                               font=fuente)
-        self.etiq2 = ttk.Label(self.root, text="Contraseña:", 
-                               font=fuente)
+        self.lbl_user = ttk.Label(self.root, text="User:", 
+                               font=fonte_grossa)
+        self.lbl_password = ttk.Label(self.root, text="Password:", 
+                               font=fonte_grossa)
         
         # Declara dos variables de tipo cadena para contener
         # el usuario y la contraseña: 
@@ -43,7 +44,7 @@ class Aplicacion():
         
         # Define dos cajas de entrada que aceptarán cadenas
         # de una longitud máxima de 30 caracteres.
-        # A la primera de ellas 'self.ctext1' que contendrá
+        # A la primera de ellas 'self.txt_user' que contendrá
         # el nombre del usuario, se le asigna la variable
         # 'self.usuario' a la opción 'textvariable'. Cualquier
         # valor que tome la variable durante la ejecución del
@@ -53,12 +54,12 @@ class Aplicacion():
         # 'show' con un "*" (asterisco) para ocultar la 
         # escritura de las contraseñas:
         
-        self.ctext1 = ttk.Entry(self.root, 
+        self.txt_user = ttk.Entry(self.root, 
                                 textvariable=self.usuario, 
-                                width=30)
-        self.ctext2 = ttk.Entry(self.root, 
+                                width=30, font=fonte_light)
+        self.txt_password = ttk.Entry(self.root, 
                                 textvariable=self.clave, 
-                                width=30, show="*")
+                                width=30, show="*", font=fonte_light)
         self.separ1 = ttk.Separator(self.root, orient=HORIZONTAL)
         
         # Se definen dos botones con dos métodos: El botón
@@ -67,9 +68,9 @@ class Aplicacion():
         # 'Cancelar' finalizará la aplicación si se llega a
         # presionar:
         
-        self.boton1 = ttk.Button(self.root, text="Aceptar", 
+        self.btn_ok = ttk.Button(self.root, text="Aceptar", 
                                  command=self.aceptar)
-        self.boton2 = ttk.Button(self.root, text="Cancelar", 
+        self.btn_ko = ttk.Button(self.root, text="Cancelar", 
                                  command=quit)
                                  
         # Se definen las posiciones de los widgets dentro de
@@ -93,26 +94,26 @@ class Aplicacion():
         # los bordes de la ventana. Hay otras equivalentes que
         # añaden espacio extra interno: 'ipàdx' y 'ipady':
                                          
-        self.etiq1.pack(side=TOP, fill=BOTH, expand=True, 
+        self.lbl_user.pack(side=TOP, fill=X, expand=True, 
                         padx=5, pady=5)
-        self.ctext1.pack(side=TOP, fill=X, expand=True, 
+        self.txt_user.pack(side=TOP, fill=X, expand=True, 
                          padx=5, pady=5)
-        self.etiq2.pack(side=TOP, fill=BOTH, expand=True, 
+        self.lbl_password.pack(side=TOP, fill=BOTH, expand=True, 
                         padx=5, pady=5)
-        self.ctext2.pack(side=TOP, fill=X, expand=True, 
+        self.txt_password.pack(side=TOP, fill=X, expand=True, 
                          padx=5, pady=5)
         self.separ1.pack(side=TOP, fill=BOTH, expand=True, 
                          padx=5, pady=5)
-        self.boton1.pack(side=LEFT, fill=BOTH, expand=True, 
+        self.btn_ok.pack(side=LEFT, fill=BOTH, expand=True, 
                          padx=5, pady=5)
-        self.boton2.pack(side=RIGHT, fill=BOTH, expand=True, 
+        self.btn_ko.pack(side=RIGHT, fill=BOTH, expand=True, 
                          padx=5, pady=5)
         
         # Cuando se inicia el programa se asigna el foco
         # a la caja de entrada de la contraseña para que se
         # pueda empezar a escribir directamente:
                 
-        self.ctext2.focus_set()
+        self.txt_password.focus_set()
         
         self.root.mainloop()
     
@@ -128,19 +129,19 @@ class Aplicacion():
     def aceptar(self):
         if self.clave.get() == 'tkinter':
             print("Acceso permitido")
-            print("Usuario:   ", self.ctext1.get())
-            print("Contraseña:", self.ctext2.get())
+            print("Usuario:   ", self.txt_user.get())
+            print("Contraseña:", self.txt_password.get())
         else:
             print("Acceso denegado")
             
             # Se inicializa la variable 'self.clave' para
-            # que el widget 'self.ctext2' quede limpio.
+            # que el widget 'self.txt_password' quede limpio.
             # Por último, se vuelve a asignar el foco
             # a este widget para poder escribir una nueva
             # contraseña.
             
             self.clave.set("")
-            self.ctext2.focus_set()
+            self.txt_password.focus_set()
 
 def main():
     mi_app = Aplicacion()

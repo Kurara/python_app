@@ -9,21 +9,21 @@ import getpass
 
 class Aplicacion():
     def __init__(self):
-        self.raiz = Tk()
+        self.root = Tk()
         
         # Define la dimensión de la ventana
         
-        self.raiz.geometry("430x200")
+        self.root.geometry("430x200")
         
         # Establece que no se pueda cambiar el tamaño de la
         # ventana
         
-        self.raiz.resizable(0,0)
-        self.raiz.title("Acceso")
+        self.root.resizable(0,0)
+        self.root.title("Acceso")
         self.fuente = font.Font(weight='bold')                       
-        self.etiq1 = ttk.Label(self.raiz, text="Usuario:", 
+        self.etiq1 = ttk.Label(self.root, text="Usuario:", 
                                font=self.fuente)
-        self.etiq2 = ttk.Label(self.raiz, text="Contraseña:", 
+        self.etiq2 = ttk.Label(self.root, text="Contraseña:", 
                                font=self.fuente)
                                
         # Declara una variable de cadena que se asigna a
@@ -32,22 +32,22 @@ class Aplicacion():
         # azul a la opción 'foreground' para el mensaje. 
                                 
         self.mensa = StringVar()
-        self.etiq3 = ttk.Label(self.raiz, textvariable=self.mensa, 
+        self.etiq3 = ttk.Label(self.root, textvariable=self.mensa, 
                      font=self.fuente, foreground='blue')
                      
         self.usuario = StringVar()
         self.clave = StringVar()
         self.usuario.set(getpass.getuser())
-        self.ctext1 = ttk.Entry(self.raiz, 
+        self.ctext1 = ttk.Entry(self.root, 
                                 textvariable=self.usuario, width=30)
-        self.ctext2 = ttk.Entry(self.raiz, 
+        self.ctext2 = ttk.Entry(self.root, 
                                 textvariable=self.clave, 
                                 width=30,
                                 show="*")
-        self.separ1 = ttk.Separator(self.raiz, orient=HORIZONTAL)
-        self.boton1 = ttk.Button(self.raiz, text="Aceptar", 
+        self.separ1 = ttk.Separator(self.root, orient=HORIZONTAL)
+        self.boton1 = ttk.Button(self.root, text="Aceptar", 
                                  padding=(5,5), command=self.aceptar)
-        self.boton2 = ttk.Button(self.raiz, text="Cancelar", 
+        self.boton2 = ttk.Button(self.root, text="Cancelar", 
                                  padding=(5,5), command=quit)
                                  
         # Se definen las ubicaciones de los widgets en la 
@@ -75,8 +75,8 @@ class Aplicacion():
         # <focusin>, <focusout>, <return>, <shift-up>, <key-f10>, 
         # <key-space>, <key-print>, <keypress-h>, etc.
         
-        self.ctext2.bind('<button-1>', self.borrar_mensa)
-        self.raiz.mainloop()
+        self.ctext2.bind('<Button-1>', self.borrar_mensa)
+        self.root.mainloop()
         
     # Declara método para validar la contraseña y mostrar
     # un mensaje en la propia ventana, utilizando la etiqueta

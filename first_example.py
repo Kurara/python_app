@@ -27,7 +27,7 @@ root.title('Aplicación')
 # Il primo parametro indica dove si
 # ubicherà il bottone, in questo caso la finestra 'root'
 
-ttk.Button(root, text='Salir', command=quit).pack(side=BOTTOM)
+ttk.Button(root, text='Uscire', command=quit).pack(side=BOTTOM)
 
 # Questa funzione construisce e mostra la finestra
 

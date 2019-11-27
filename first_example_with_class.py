@@ -9,7 +9,7 @@ class Aplicacion():
     def __init__(self):
         root = Tk()
         root.geometry('300x200')
-        root.configure(bg = 'beige')
+        root.configure(bg = '#b3ecff')
         root.title('Aplicación')
         ttk.Button(root, text='Salir', 
                    command=root.destroy).pack(side=BOTTOM)

@@ -18,7 +18,7 @@ class Aplicacion():
         self.root.resizable(0,0)
         fuente = font.Font(weight='bold')
         
-        # Definisce un widget di tipo 'Frame' (marco) cha farà
+        # Definisce un widget di tipo 'Frame' (cornice) cha farà
         # di contenitore del resto di widgets. Sarà situato
         # dentro di 'self.root'.
         # Ha un bordo di 2 pixel e il valore relief="raised" le
@@ -26,16 +26,16 @@ class Aplicacion():
         # Posibili valori:
         # FLAT (piato), RAISED (rialzato), SUNKEN (),
         # GROOVE () y RIDGE ().
-        # 'padding' è lo spazio interiore fra i widget e il marco.
+        # 'padding' è lo spazio interiore fra i widget e il cornice.
           
-        self.marco = ttk.Frame(self.root, borderwidth=2,
+        self.cornice = ttk.Frame(self.root, borderwidth=2,
                                relief="raised", padding=(10,10))
                                
-        # Definisce il resto di widget dentro a 'marco'
+        # Definisce il resto di widget dentro a 'cornice'
                                
-        self.etiq1 = ttk.Label(self.marco, text="User:", 
+        self.etiq1 = ttk.Label(self.cornice, text="User:", 
                                font=fuente, padding=(5,5))
-        self.etiq2 = ttk.Label(self.marco, text="Password:",
+        self.etiq2 = ttk.Label(self.cornice, text="Password:",
                                font=fuente, padding=(5,5))
                                
         # Definisce variabili per 'textvariable'
@@ -43,15 +43,15 @@ class Aplicacion():
         self.usuario = StringVar()
         self.clave = StringVar()
         self.usuario.set(getpass.getuser())        
-        self.ctext1 = ttk.Entry(self.marco, textvariable=self.usuario, 
+        self.ctext1 = ttk.Entry(self.cornice, textvariable=self.usuario, 
                                 width=30)
-        self.ctext2 = ttk.Entry(self.marco, textvariable=self.clave, 
+        self.ctext2 = ttk.Entry(self.cornice, textvariable=self.clave, 
                                 show="*", 
                                 width=30)
-        self.separ1 = ttk.Separator(self.marco, orient=HORIZONTAL)
-        self.boton1 = ttk.Button(self.marco, text="Aceptar", 
+        self.separ1 = ttk.Separator(self.cornice, orient=HORIZONTAL)
+        self.boton1 = ttk.Button(self.cornice, text="Aceptar", 
                                  padding=(5,5), command=self.aceptar)
-        self.boton2 = ttk.Button(self.marco, text="Cancelar", 
+        self.boton2 = ttk.Button(self.cornice, text="Cancelar", 
                                  padding=(5,5), command=quit)
         
         # Define la ubicación de cada widget en el grid.
@@ -69,7 +69,7 @@ class Aplicacion():
         # 'self.ctext2' ocuparán dos columnas y la barra
         # de separación 'self.separ1' tres.
         
-        self.marco.grid(column=0, row=0)
+        self.cornice.grid(column=0, row=0)
         self.etiq1.grid(column=0, row=0)
         self.ctext1.grid(column=1, row=0, columnspan=2)
         self.etiq2.grid(column=0, row=1)
