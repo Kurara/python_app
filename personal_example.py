@@ -6,8 +6,9 @@ from tkinter import messagebox
 class AppWithBinds:
     def __init__(self):
         self.root = Tk()
-        self.root.geometry("430x200")
+        self.root.geometry("500x290")
         self.root.resizable(1,1)
+        self.root.configure(bg = '#D91818')
 
         self.num2 = IntVar()
         self.num1 = IntVar()
@@ -24,13 +25,13 @@ class AppWithBinds:
             textvariable=self.num2, 
             command=self.calcolare
         )
-        self.image = Label(self.root, image=self.icon, 
+        self.img_apple = Label(self.root, image=self.icon, 
                       relief='raised')
 
         self.lvlResult = ttk.Label(
             self.root, text="", padding=(5,5), textvariable=self.textResult
         )
-        self.lista_1 = Listbox(self.root, height=50, width=50)
+        self.lista_1 = Listbox(self.root)
 
         self.filemenu = Menu(self.root, tearoff=0)
         self.filemenu.add_command(label="New")
@@ -40,11 +41,13 @@ class AppWithBinds:
         self.main_menu = Menu(self.root)
         self.main_menu.add_cascade(label="File", menu=self.filemenu)
 
-        self.firstValue.place(relx=0, rely=0)
-        self.secondValue.place(relx=0.5, rely=0)
-        self.lvlResult.place(y=20)
-        self.lista_1.place(y=50, x= 20)
-        self.image.place(y=20)
+        self.img_apple.place(relx=0, rely=0)
+        self.lista_1.place(y=0, relx=0.5)
+        
+        self.firstValue.place(x=0, y=230, relx=0, rely=0)
+        self.secondValue.place(x=0, y=230, relx=0.5, rely=0)
+        self.lvlResult.place(y=200, relx=0.5)
+        
         self.textResult.trace('w', self.prova)
 
         self.lista_1.bind('<Double-Button-1>', self.color)
