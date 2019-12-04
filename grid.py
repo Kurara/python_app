@@ -54,20 +54,17 @@ class Aplicacion():
         self.boton2 = ttk.Button(self.cornice, text="Cancelar", 
                                  padding=(5,5), command=quit)
         
-        # Define la ubicación de cada widget en el grid.
-        # En este ejemplo en realidad hay dos grid (cuadrículas):
-        # Una cuadrícula de 1fx1c que se encuentra en la ventana 
-        # que ocupará el Frame; y otra en el Frame de 5fx3c para
-        # el resto de controles.
-        # La primera fila y primera columna serán la número 0.
-        # La opción 'column' indica el número de columna y la
-        # opción 'row' indica el número de fila donde hay que 
-        # colocar un widget. 
-        # La opción 'columnspan' indica al gestor que el 
-        # widget ocupará en total un número determinado de
-        # columnas. Las cajas para entradas 'self.ctext1' y
-        # 'self.ctext2' ocuparán dos columnas y la barra
-        # de separación 'self.separ1' tres.
+        # Definisce l'ubicazione di ogni widget nella grid.
+        # In questo esempio, ci sono 2 grid:
+        # Uno di 1fx1c dentro della finestra dove verrà messo
+        # il Frame; e altra nel Frame di 5fx3c per il resto 
+        # di widgets.
+        # La prima riga  e la prima colonna stanno nel numero 0.
+        # La opzione 'column' indica il numero di colonna e la
+        # opzione 'row' indica il numero di riga dove
+        # colochiamo i widget.
+        # La opzione 'columnspan' indica che il
+        # widget ocuperà il numero scelto di colonne.
         
         self.cornice.grid(column=0, row=0)
         self.etiq1.grid(column=0, row=0)

@@ -5,7 +5,7 @@ from tkinter import *
 from tkinter import ttk, font
 import getpass
 
-# Gestor de geometría (grid). Ventana dimensionable
+# Gestor de geometría (grid). Finestra dimensionabile
 
 class Aplicacion():
     def __init__(self):
@@ -14,9 +14,9 @@ class Aplicacion():
         fuente = font.Font(weight='bold')  
         self.cornice = ttk.Frame(self.root, borderwidth=2,
                                relief="raised", padding=(10,10))
-        self.etiq1 = ttk.Label(self.cornice, text="Usuario:", 
+        self.label1 = ttk.Label(self.cornice, text="Usuario:", 
                                font=fuente, padding=(5,5))
-        self.etiq2 = ttk.Label(self.cornice, text="Contraseña:", 
+        self.label2 = ttk.Label(self.cornice, text="Contraseña:", 
                                font=fuente, padding=(5,5))
         self.usuario = StringVar()
         self.clave = StringVar()
@@ -26,42 +26,40 @@ class Aplicacion():
         self.ctext2 = ttk.Entry(self.cornice, textvariable=self.clave,
                                 show="*", width=30)
         self.separ1 = ttk.Separator(self.cornice, orient=HORIZONTAL)
-        self.boton1 = ttk.Button(self.cornice, text="Aceptar", 
+        self.btn1 = ttk.Button(self.cornice, text="Aceptar", 
                                  padding=(5,5), command=self.aceptar)
-        self.boton2 = ttk.Button(self.cornice, text="Cancelar", 
+        self.btn2 = ttk.Button(self.cornice, text="Cancelar", 
                                  padding=(5,5), command=quit)
         
-        # Para conseguir que la cuadricula y los widgets se 
-        # adapten al contenedor, si se amplia o reduce el tamaño
-        # de la ventana, es necesario definir la opción 'sticky'.
-        # Cuando un widget se ubica en el grid se coloca en el
-        # centro de su celda o cuadro. Con 'sticky' se
-        # establece el comportamiendo 'pegajoso' que tendrá el 
-        # widget dentro de su celda, cuando se modifique la 
-        # dimensión de la ventana. Para ello, se utilizan para
-        # expresar sus valores los puntos cardinales: N (Norte),
-        # S (Sur), (E) Este y (W) Oeste, que incluso se pueden
-        # utilizar de forma combinada. El widget se quedará 
-        # 'pegado' a los lados de su celda en las direcciones
-        # que se indiquen. cuando la ventana cambie de tamaño. 
-        # Pero con definir la opción 'sticky' no es suficiente: 
-        # hay activar esta propiedad más adelante.
+        # Per riuscire che la grid e i widget si adattino al
+        # contenitore nel momento che la finestra si fa grande
+        # o si rimpiciolisce, bisogna definire la opzione 'sticky'.
+        # Quando un widget si ubica nel grid, si mette nel centro 
+        # della sua cella o quadro. Con 'sticky' si
+        # stabilisce il suo comportamento 'appiccicoso' che avrà il
+        # widget dentro della sua cella, quando si modifichi la 
+        # dimensione della finestra. Per questo, si utilizerà
+        # i punti cardinali: N (Nord), S (Sud), (E) Est e (W) Ovest,
+        # si possono anche combinare. Il widget rimarrà 
+        # 'incollato' ai suoi lati della cella nelle direzioni
+        # che si indichino quando la finestra cambila sua dimensione. 
+        # Pero serve attivare anche quello che vedremmo sotto.
         
         self.cornice.grid(column=0, row=0, padx=5, pady=5, 
                         sticky=(N, S, E, W))
-        self.etiq1.grid(column=0, row=0, 
+        self.label1.grid(column=0, row=0, 
                         sticky=(N, S, E, W))
         self.ctext1.grid(column=1, row=0, columnspan=2, 
                          sticky=(E, W))
-        self.etiq2.grid(column=0, row=1,
+        self.label2.grid(column=0, row=1,
                         sticky=(N, S, E, W))
         self.ctext2.grid(column=1, row=1, columnspan=2, 
                          sticky=(E, W))
         self.separ1.grid(column=0, row=3, columnspan=3, pady=5, 
                          sticky=(N, S, E, W))
-        self.boton1.grid(column=1, row=4, padx=5, 
+        self.btn1.grid(column=1, row=4, padx=5, 
                          sticky=(E))
-        self.boton2.grid(column=2, row=4, padx=5, 
+        self.btn2.grid(column=2, row=4, padx=5, 
                          sticky=(W))
 
         # A continuación, se activa la propiedad de expandirse
